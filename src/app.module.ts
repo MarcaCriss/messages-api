@@ -13,7 +13,7 @@ import { MessagesController } from './messages/messages.controller';
       username: 'root',
       password: '',
       database: 'messages',
-      entities: ['dist/**/*.entity{.ts,.js}'],
+      entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true,
     }),
   ],
