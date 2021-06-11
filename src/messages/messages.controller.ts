@@ -12,8 +12,8 @@ import { CreateMessageDto, EditMessageDto } from './dtos';
 @Controller('messages')
 export class MessagesController {
   @Post()
-  create(@Body() createMessasgeDto: CreateMessageDto) {
-    return 'mensaje creado' + createMessasgeDto;
+  create(@Body() createMessageDto: CreateMessageDto) {
+    return 'mensaje creado' + createMessageDto;
   }
 
   @Get()
