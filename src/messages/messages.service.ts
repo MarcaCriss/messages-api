@@ -13,23 +13,28 @@ export class MessagesService {
     private readonly messageRepository: Repository<MessageEntity>,
   ) {}
 
-  async getAll() {
+  async getAll(): Promise<MessageEntity[]> {
     return await this.messageRepository.find();
   }
 
-  async createMessage(createMessageDto: CreateMessageDto) {
+  async createMessage(
+    createMessageDto: CreateMessageDto,
+  ): Promise<MessageEntity> {
     const message = this.messageRepository.create(createMessageDto);
     return await this.messageRepository.save(message);
   }
 
-  async updateMessage(id: number, updateMessateDto: EditMessageDto) {
+  async updateMessage(
+    id: number,
+    updateMessateDto: EditMessageDto,
+  ): Promise<MessageEntity> {
     const message = await this.messageRepository.findOne(id);
     if (!message) throw new NotFoundException('No existe ese mensaje');
     const messageUpdated = Object.assign(message, updateMessateDto);
     return await this.messageRepository.save(messageUpdated);
   }
 
-  async deleteMessage(id: number) {
+  async deleteMessage(id: number): Promise<any> {
     return await this.messageRepository.delete(id);
   }
 }
